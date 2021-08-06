@@ -81,4 +81,12 @@ cliente.on('ready', () => {
   jobFrontVie.start()
   jobMetodologia.start()
 })
+
+const PORT = 8080
+
+app.listen(PORT || process.env.PORT, () => {
+  console.log(`Server inicializado en el puerto: ${PORT}`)
+})
+
+
 cliente.login(process.env.CLIENT_TOKEN);
