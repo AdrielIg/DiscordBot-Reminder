@@ -27,7 +27,6 @@ const obtainDay = () => {
   /* day = dia */
   minute = minuto
   hour = hora
-  console.log(minuto)
   if ((hora <= 14 && hora >= 0) || hora > 18) {
     clase = "primera"
   }
@@ -46,7 +45,6 @@ cliente.on('ready', () => {
   console.log(`Logged in as ${cliente.user.tag}!`)
   const channelName = 'bot'
   const channel = cliente.channels.cache.find(channel => channel.name === channelName)
-  channel.send('hola')
   /* Checkea cada minuto si tiene que enviar o no el mensaje */
   function checking() {
 
