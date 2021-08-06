@@ -11,9 +11,10 @@ app.get('/', (req, res) => {
 })
 
 
+const LABORALES = [1, 2, 3, 4, 5]
 
-let counter = 0
-let day = 7
+
+let day;
 let hour;
 let minute;
 let clase;
@@ -24,7 +25,7 @@ const obtainDay = () => {
   let dia = today.getDay()
   let hora = today.getHours()
   let minuto = today.getMinutes()
-  /* day = dia */
+  day = dia
   minute = minuto
   hour = hora
   if ((hora <= 14 && hora >= 0) || hora > 18) {
@@ -41,22 +42,27 @@ const obtainDay = () => {
 }
 obtainDay()
 
+const isLaboral = LABORALES.includes(day)
+
+
 cliente.on('ready', () => {
   console.log(`Logged in as ${cliente.user.tag}!`)
   const channelName = 'bot'
   const channel = cliente.channels.cache.find(channel => channel.name === channelName)
+
   /* Checkea cada minuto si tiene que enviar o no el mensaje */
   function checking() {
 
-    if ((day < 1 || day > 5) && hour === 8 && minute === 1) {
+    if ((!isLaboral) && hour === 8 && minute === 1) {
       channel.send(':partying_face: Hoy no clases papaaa :partying_face:')
     }
+    else if (isLaboral) {
+      let subject = isLaboral ? links[day][clase] : null
 
-    else if (day >= 1 || day <= 5) {
-
-      let subject = day >= 1 || day <= 5 ? links[day][clase] : null
-
-      if (hour === 12 && minute === 55) {
+      if (day === 2 && hour === 12 && minute === 55) {
+        channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
+      }
+      else if (hour === 12 && minute === 55) {
         channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
       }
       else if (hour === 15 && minute === 25) {
@@ -65,16 +71,8 @@ cliente.on('ready', () => {
       else if (hour === 17 && minute === 55) {
         channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
       }
-      else {
-        return
-      }
     }
-    else {
-      return
-    }
-
-
-    ifsetTimeout(checking, 60000)
+    setTimeout(checking, 60000)
   }
   checking()
 })
