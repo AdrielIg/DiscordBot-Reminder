@@ -1,8 +1,14 @@
 require('dotenv').config()
 const cron = require('cron')
+const express = require('express')
 const Discord = require('discord.js')
 const links = require('./clases')
 const cliente = new Discord.Client()
+const app = express()
+
+app.get('/', (req, res) => {
+  res.send('Todo ok')
+})
 
 
 
