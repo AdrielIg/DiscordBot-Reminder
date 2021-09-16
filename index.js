@@ -5,6 +5,10 @@ const Discord = require('discord.js')
 const links = require('./clases')
 const cliente = new Discord.Client()
 const app = express()
+
+
+
+
 app.get('/', (req, res) => {
   res.send('Todo ok')
 })
@@ -40,24 +44,30 @@ const obtainDay = () => {
     clase = 'tercera'
   }
   else {
-    clase = 'primera'
+    clase = 'segunda'
   }
   const num = dia.toString()
   let subject = links[DAYS[num]][clase]
   return subject
 }
 
+cliente.on('message', (message) => {
+  const channelName = '📅｜clases';
+  const channel = cliente.channels.cache.find(channel => channel.name === channelName);
+  if (message.content == 'hi') {
+    channel.send('@everyone Volvi, y en forma de fichas :sunglasses:')
+  }
+})
 
 cliente.on('ready', () => {
   console.log(`Logged in as ${cliente.user.tag}!`)
   const channelName = '📅｜clases'
   const channel = cliente.channels.cache.find(channel => channel.name === channelName)
-  channel.send('Volvi, y en forma de fichas :sunglasses:')
+
 
   /* POO JOB */
   const jobPOO = new cron.CronJob('25 15 * * 1,3,4', () => {
     const subject = obtainDay()
-
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
   /* Front End II */
@@ -108,6 +118,8 @@ cliente.on('ready', () => {
 })
 
 cliente.on('error', () => {
+  const channelName = '📅｜clases';
+  const channel = cliente.channels.cache.find(channel => channel.name === channelName);
   channel.send('Me mori porque el raton de adriel no quiere pagar un server :rat:')
 })
 
