@@ -1,83 +1,83 @@
 const LINKS = {
-  1: {
+  lunes: {
     primera: {
-      materia: 'Introduccion a la informática',
-      aula: "Aula 37",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual37'
+      materia: 'Testing I',
+      aula: "Aula 60",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
     },
     segunda: {
-      materia: 'Programación Imperativa',
-      aula: "Aula 21",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual21'
+      materia: 'POO',
+      aula: "Aula 53",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
     },
     tercera: {
-      materia: 'Base de Datos',
-      aula: "Aula 57",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual57'
+      materia: 'Front End II',
+      aula: "Aula 31",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
     }
   },
-  2: {
-    primera: {
-      materia: 'Front End',
-      aula: "Aula 48",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual48'
+  martes: {
+    segunda: {
+      materia: 'Infraestructura I',
+      aula: "Aula 32",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
+    },
+    tercera: {
+      materia: 'Testing I',
+      aula: "Aula 60",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
     }
   },
-  3: {
+  miercoles: {
+    segunda: {
+      materia: 'POO',
+      aula: "Aula 53",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
+    },
+    tercera: {
+      materia: 'Front End II',
+      aula: "Aula 31",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
+    }
+  },
+  jueves: {
     primera: {
-      materia: 'Introduccion a la informática',
-      aula: "Aula 37",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual37'
+      materia: 'Infraestructura I',
+      aula: "Aula 32",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
     },
     segunda: {
-      materia: 'Programación Impertativa',
-      aula: "Aula 21",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual21'
+      materia: 'POO',
+      aula: "Aula 53",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
     },
     tercera: {
-      materia: 'Metodologías de Trabajo',
-      aula: "Aula 47",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual47'
+      materia: 'Desing Thinking',
+      aula: "Aula 30",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual30'
     }
   },
-  4: {
+  viernes: {
     primera: {
-      materia: 'Front End',
-      aula: "Aula 48",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual48'
+      materia: 'Testing I',
+      aula: "Aula 60",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
     },
     segunda: {
-      materia: 'Programación Imperativa',
-      aula: "Aula 21",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual21'
+      materia: 'Infraestructura I',
+      aula: "Aula 32",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
     },
     tercera: {
-      materia: 'Base de Datos',
-      aula: "Aula 57",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual57'
+      materia: 'Front End II',
+      aula: "Aula 31",
+      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
     }
   },
-  5: {
-    primera: {
-      materia: 'Introduccion a la informática',
-      aula: "Aula 37",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual37'
-    },
-    segunda: {
-      materia: 'Front End',
-      aula: "Aula 48",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual48'
-    },
-    tercera: {
-      materia: 'Base de Datos',
-      aula: "Aula 57",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual57'
-    }
-  },
-  6: {
+  sabado: {
 
   },
-  7: {
+  domingo: {
 
   }
 }

@@ -8,24 +8,32 @@ const app = express()
 app.get('/', (req, res) => {
   res.send('Todo ok')
 })
-const LABORALES = [1, 2, 3, 4, 5]
-let day;
-let hour;
-let clase;
+
+const DAYS = {
+  1: 'lunes',
+  2: 'martes',
+  3: 'miercoles',
+  4: 'jueves',
+  5: 'viernes',
+  6: 'sabado',
+  7: 'domingo',
+  0: 'domingo',
+}
+
 
 /* Obtiene la fecha y hora actual cada minuto y setea las variables globales */
 const obtainDay = () => {
   let today = new Date()
   let dia = today.getDay()
-  let hora = today.getHours()
-  /* let minuto = today.getMinutes() */
-  day = dia
-  /* minute = minuto */
-  hour = hora
+  let clase;
+  let dateArg = new Date().toLocaleString("en-US", { timeZone: 'America/Argentina/Buenos_Aires' })
+  let argentina = new Date(dateArg);
+  let hora = parseInt(("0" + argentina.getHours()).slice(-2));
+
   if (hora === 12 || hora === 20) {
     clase = "primera"
   }
-  else if (hora === 15) {
+  else if (hora === 15 || hora === 13) {
     clase = 'segunda'
   }
   else if (hora === 17) {
@@ -34,52 +42,73 @@ const obtainDay = () => {
   else {
     clase = 'primera'
   }
-  setTimeout(obtainDay, 60000)
+  const num = dia.toString()
+  let subject = links[DAYS[num]][clase]
+  return subject
 }
-obtainDay()
 
-/* Boolean */
-const isLaboral = LABORALES.includes(day)
-
-/* Obtener materia segun dia y hora */
-let subject = isLaboral ? links[day][clase] : null
 
 cliente.on('ready', () => {
   console.log(`Logged in as ${cliente.user.tag}!`)
-  const channelName = 'bot'
+  const channelName = '📅｜clases'
   const channel = cliente.channels.cache.find(channel => channel.name === channelName)
+  channel.send('Volvi, y en forma de fichas :sunglasses:')
 
-  /* Base de datos Job */
-  const jobBase = new cron.CronJob('55 17 * * 1,4,5', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
-  /* Imperativa Job */
-  const jobImperativa = new cron.CronJob('25 15 * * 1,3,4', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
-  /* Intro Informatica Job */
-  const jobInformatica = new cron.CronJob('55 12 * * 1,3,5', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
-  /* Metodolgia Job */
-  const jobMetodologia = new cron.CronJob('55 17 * * 3', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
-  /* Front job martes y jueves */
-  const jobFrontMarYJue = new cron.CronJob('55 12 * * 2,4', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
-  /* Front job Viernes */
-  const jobFrontVie = new cron.CronJob('25 15 * * 5', () => {
-    channel.send(`/////////////////////////////////////////////////////////////////// \n:clipboard: La materia es ***${subject.materia}*** \n :link:${subject.aula}\n ${subject.link}`)
-  })
+  /* POO JOB */
+  const jobPOO = new cron.CronJob('25 15 * * 1,3,4', () => {
+    const subject = obtainDay()
 
-  jobBase.start()
-  jobImperativa.start()
-  jobInformatica.start()
-  jobFrontMarYJue.start()
-  jobFrontVie.start()
-  jobMetodologia.start()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+  /* Front End II */
+  const jobFront = new cron.CronJob('55 17 * * 1,3,5', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+  /* Desing Thinking Job */
+
+  const jobDesing = new cron.CronJob('55 17 * * 4', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+  /* Testing I JOB */
+  const jobTesting = new cron.CronJob('55 12 * * 1,5', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+  const jobTestingMartes = new cron.CronJob('55 17 * * 2', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+  /* Infraestructura */
+  const jobInfra = new cron.CronJob('25 15 * * 2,5', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+  const jobInfraJueves = new cron.CronJob('55 12 * * 4', () => {
+    const subject = obtainDay()
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  }, null, true, "America/Argentina/Buenos_Aires")
+
+
+
+  jobPOO.start();
+  jobFront.start();
+  jobDesing.start();
+  jobTesting.start();
+  jobTestingMartes.start();
+  jobInfra.start();
+  jobInfraJueves.start();
+
+})
+
+cliente.on('error', () => {
+  channel.send('Me mori porque el raton de adriel no quiere pagar un server :rat:')
 })
 
 const PORT = 8080
