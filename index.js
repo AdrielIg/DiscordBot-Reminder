@@ -54,8 +54,8 @@ const obtainDay = () => {
 cliente.on('message', (message) => {
   const channelName = '📅｜clases';
   const channel = cliente.channels.cache.find(channel => channel.name === channelName);
-  if (message.content == 'hi') {
-    channel.send('@everyone Volvi, y en forma de fichas :sunglasses:')
+  if (message.content === 'bye') {
+    channel.send('@everyone @Reminder les desea unas muy buenas fiestas y unas muy buenas vacaciones. Disfruten el descanso y espero que este servidor siga vivo durante el verano!! Hagan proyectos! Cualquier duda en este discord estamos todos para ayudarnos, no se olviden eso. Muchas gracias a todos y a Yami <3 ')
   }
 })
 
@@ -107,13 +107,15 @@ cliente.on('ready', () => {
 
 
 
-  jobPOO.start();
+  // Dejarlos comentados para que no inicie el job y no mande el link de la clase
+
+  /* jobPOO.start();
   jobFront.start();
   jobDesing.start();
   jobTesting.start();
   jobTestingMartes.start();
   jobInfra.start();
-  jobInfraJueves.start();
+  jobInfraJueves.start(); */
 
 })
 
