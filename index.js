@@ -6,9 +6,6 @@ const links = require('./clases')
 const cliente = new Discord.Client()
 const app = express()
 
-
-
-
 app.get('/', (req, res) => {
   res.send('Todo ok')
 })
@@ -51,13 +48,7 @@ const obtainDay = () => {
   return subject
 }
 
-cliente.on('message', (message) => {
-  const channelName = '📅｜clases';
-  const channel = cliente.channels.cache.find(channel => channel.name === channelName);
-  if (message.content === 'bye') {
-    channel.send('@everyone @Reminder les desea unas muy buenas fiestas y unas muy buenas vacaciones. Disfruten el descanso y espero que este servidor siga vivo durante el verano!! Hagan proyectos! Cualquier duda en este discord estamos todos para ayudarnos, no se olviden eso. Muchas gracias a todos y a Yami <3 ')
-  }
-})
+
 
 cliente.on('ready', () => {
   console.log(`Logged in as ${cliente.user.tag}!`)
@@ -65,57 +56,55 @@ cliente.on('ready', () => {
   const channel = cliente.channels.cache.find(channel => channel.name === channelName)
 
 
-  /* POO JOB */
-  const jobPOO = new cron.CronJob('25 15 * * 1,3,4', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
-  }, null, true, "America/Argentina/Buenos_Aires")
-  /* Front End II */
-  const jobFront = new cron.CronJob('55 17 * * 1,3,5', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  /* BACKEND L,M,M Y V. 13.00  JOB */
+  const jobBackend = new cron.CronJob('25 15 * * 1,2,3,5', () => {
+    const clase = list?.backend
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
-  /* Desing Thinking Job */
-
-  const jobDesing = new cron.CronJob('55 17 * * 4', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  const jobBackendAfternoon = new cron.CronJob('55 17 * * 2', () => {
+    const clase = list?.backend
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
-  /* Testing I JOB */
-  const jobTesting = new cron.CronJob('55 12 * * 1,5', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  const jobBackendMorning = new cron.CronJob('55 10 * * 5', () => {
+    const clase = list?.backend
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
-  const jobTestingMartes = new cron.CronJob('55 17 * * 2', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  // Job INFRA
+  const jobInfra = new cron.CronJob('55 12 * * 1,3,4', () => {
+    const clase = list?.infraestructura
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
-  /* Infraestructura */
-  const jobInfra = new cron.CronJob('25 15 * * 2,5', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  // JOB FRONT
+  const jobFrontend = new cron.CronJob('55 17 * * 1,3,5', () => {
+    const clase = list?.frontend
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
-  const jobInfraJueves = new cron.CronJob('55 12 * * 4', () => {
-    const subject = obtainDay()
-    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${subject.materia}*** \n :school_satchel:${subject.aula}\n :link: ${subject.link}`)
+  // JOB UX/UI
+
+  const jobUXUI = new cron.CronJob('55 17 * * 4', () => {
+    const clase = list?.uxui
+    const { materia, aula, link } = clase
+    channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
-
-
 
   // Dejarlos comentados para que no inicie el job y no mande el link de la clase
 
-  /* jobPOO.start();
-  jobFront.start();
-  jobDesing.start();
-  jobTesting.start();
-  jobTestingMartes.start();
-  jobInfra.start();
-  jobInfraJueves.start(); */
+  jobBackend.start()
+  jobBackendAfternoon.start()
+  jobBackendMorning.start()
+  jobInfra.start()
+  jobFrontend.start()
+  jobUXUI.start()
 
 })
 

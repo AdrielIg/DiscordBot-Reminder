@@ -1,84 +1,23 @@
 const LINKS = {
-  lunes: {
-    primera: {
-      materia: 'Testing I',
-      aula: "Aula 60",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
-    },
-    segunda: {
-      materia: 'POO',
-      aula: "Aula 53",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
-    },
-    tercera: {
-      materia: 'Front End II',
-      aula: "Aula 31",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
-    }
+  backend: {
+    materia: 'Backend',
+    aula: "Aula 67",
+    link: 'https://digitalhouse.zoom.us/my/aulavirtual67'
   },
-  martes: {
-    segunda: {
-      materia: 'Infraestructura I',
-      aula: "Aula 32",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
-    },
-    tercera: {
-      materia: 'Testing I',
-      aula: "Aula 60",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
-    }
+  infraestructura: {
+    materia: 'Infraestructura II',
+    aula: "Aula 63",
+    link: 'https://digitalhouse.zoom.us/my/aulavirtual63'
   },
-  miercoles: {
-    segunda: {
-      materia: 'POO',
-      aula: "Aula 53",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
-    },
-    tercera: {
-      materia: 'Front End II',
-      aula: "Aula 31",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
-    }
+  uxui: {
+    materia: 'UX/UI',
+    aula: "Aula 65",
+    link: 'https://digitalhouse.zoom.us/my/aulavirtual65'
   },
-  jueves: {
-    primera: {
-      materia: 'Infraestructura I',
-      aula: "Aula 32",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
-    },
-    segunda: {
-      materia: 'POO',
-      aula: "Aula 53",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual53'
-    },
-    tercera: {
-      materia: 'Desing Thinking',
-      aula: "Aula 30",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual30'
-    }
-  },
-  viernes: {
-    primera: {
-      materia: 'Testing I',
-      aula: "Aula 60",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual60'
-    },
-    segunda: {
-      materia: 'Infraestructura I',
-      aula: "Aula 32",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual32'
-    },
-    tercera: {
-      materia: 'Front End II',
-      aula: "Aula 31",
-      link: 'https://digitalhouse.zoom.us/my/aulavirtual31'
-    }
-  },
-  sabado: {
-
-  },
-  domingo: {
-
+  frontend: {
+    materia: 'Frontend III',
+    aula: "Aula 44",
+    link: 'https://digitalhouse.zoom.us/my/aulavirtual44'
   }
 }
 
