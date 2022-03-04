@@ -58,33 +58,33 @@ cliente.on('ready', () => {
 
   /* BACKEND L,M,M Y V. 13.00  JOB */
   const jobBackend = new cron.CronJob('25 15 * * 1,2,3,5', () => {
-    const clase = list?.backend
+    const clase = links?.backend
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
   const jobBackendAfternoon = new cron.CronJob('55 17 * * 2', () => {
-    const clase = list?.backend
+    const clase = links?.backend
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
   const jobBackendMorning = new cron.CronJob('55 10 * * 5', () => {
-    const clase = list?.backend
+    const clase = links?.backend
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
   // Job INFRA
   const jobInfra = new cron.CronJob('55 12 * * 1,3,4', () => {
-    const clase = list?.infraestructura
+    const clase = links?.infraestructura
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
 
   // JOB FRONT
   const jobFrontend = new cron.CronJob('55 17 * * 1,3,5', () => {
-    const clase = list?.frontend
+    const clase = links?.frontend
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
@@ -92,7 +92,7 @@ cliente.on('ready', () => {
   // JOB UX/UI
 
   const jobUXUI = new cron.CronJob('55 17 * * 4', () => {
-    const clase = list?.uxui
+    const clase = links?.uxui
     const { materia, aula, link } = clase
     channel.send(`/////////////////////////////////////////////////////////////////// \n @everyone  \n:clipboard: La materia es ***${materia}*** \n :school_satchel:${aula}\n :link: ${link}`)
   }, null, true, "America/Argentina/Buenos_Aires")
